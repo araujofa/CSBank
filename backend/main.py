@@ -39,6 +39,12 @@ if option == 1:
             print('               FAZER DEPOSITO!')
             print('--------------------------------------------\n')
             usuario.Depositar()
+        elif opt == 2:
+            os.system('cls')
+            print('--------------------------------------------')
+            print('               FAZER SAQUE!')
+            print('--------------------------------------------\n')
+            usuario.Sacar()
         elif opt == 3:
             os.system('cls')
             print('--------------------------------------------')
