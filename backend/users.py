@@ -92,6 +92,7 @@ class User:
             # VERIFICA SE O QUE O USUARIO DIGITOU SÃO NUMEROS
             if saque.isdigit():
                 saque = float(saque)
+                self.saldo = float(self.saldo)
                 # VERIFICA SE O VALOR DESEJADO PARA SAQUE É MAIOR QUE O SALDO EM CONTA
                 if saque > self.saldo:
                     print('SALDO INSUFICIENTE PARA SAQUE!')
@@ -112,4 +113,45 @@ class User:
             else:
                 print('VALOR INVÁLIDO (DIGITE SOMENTE NUMEROS)')
         
+        return
+    
+    # MÉTODO PARA QUE UM USUARIO POSSA LOGAR SUA CONTA
+    def Logar(self):
+        input_email_vazio = True
+        input_senha_vazio = True
+        input_nome_vazio = True
+
+        # VERIFICA SE AS VARIAVEIS NÃO POSSUEM CONTEUDO, CASO NÃO POSSUAM, ATRIBUI O VALOR QUE ESTIVER NELA MESMA
+        if not self.nome and not self.email and not self.senha:
+            self.nome = self.nome
+            self.email = self.email
+            self.senha = self.senha
+
+        # LOOP WHILE PARA VERIFICAÇÃO DE INPUT VAZIO
+        while(input_nome_vazio):
+            self.nome = input('Digite seu nome completo:')
+            if self.nome == '':
+                print('O CAMPO NÃO PODE FICAR VAZIO!')
+            else:
+                # ENCERRA WHILE LOOP CASO INPUT NÃO ESTEJA VAZIO
+                input_nome_vazio = False
+
+        # LOOP WHILE PARA VERIFICAÇÃO DE INPUT VAZIO
+        while(input_email_vazio):
+            self.email = input('Digite seu email: ')
+            if self.email == '':
+                print('O CAMPO NÃO PODE FICAR VAZIO!')
+            else:
+                # ENCERRA WHILE LOOP CASO INPUT NÃO ESTEJA VAZIO
+                input_email_vazio = False
+
+        # LOOP WHILE PARA VERIFICAÇÃO DE INPUT VAZIO
+        while(input_senha_vazio):
+            self.senha = input('Digite sua senha: ')
+            if self.senha == '':
+                print('O CAMPO NÃO PODE FICAR VAZIO!')
+            else:
+                # ENCERRA WHILE LOOP CASO INPUT NÃO ESTEJA VAZIO
+                input_senha_vazio = False
+            
         return

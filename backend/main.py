@@ -6,6 +6,7 @@ print('--------------------------------------------')
 print('        SEJA BEM-VINDO(A) AO CS BANK\n')
 print('        1. CRIAR UMA CONTA')
 print('        2. FAZER LOGIN')
+print('        3. SAIR')
 print('--------------------------------------------\n')
 option = int(input('>>>> '))
 
@@ -46,6 +47,50 @@ if option == 1:
             print('--------------------------------------------\n')
             usuario.Sacar()
         elif opt == 3:
+            os.system('cls')
+            print('--------------------------------------------')
+            print('            SALDO EM CONTA: ')
+            print('--------------------------------------------\n')
+            print(f'Olá {usuario.nome.upper()}, seu saldo atual é de R${usuario.saldo}\n')
+
+            input('PRESSIONE QUALQUER TECLA PARA VOLTAR')
+        else:
+            usuario_nao_saiu = False
+
+elif option == 2:
+    os.system('cls')
+    print('--------------------------------------------')
+    print('             ENTRE EM SUA CONTA!')
+    print('--------------------------------------------\n')
+    usuario.Logar()
+
+    usuario_nao_saiu = True
+    while(usuario_nao_saiu):
+        os.system('cls')
+        print('--------------------------------------------')
+        print(f'          SEJA BEM-VINDO(A) {usuario.nome.upper()}')
+        print('--------------------------------------------')
+        print('          O QUE DESEJA FAZER HOJE?\n')
+        print('          1. FAZER DEPOSITO')
+        print('          2. FAZER SAQUE')
+        print('          3. VER SALDO NA CONTA')
+        print('          4. SAIR')
+        print('--------------------------------------------\n')
+        optL = int(input('>>>> '))
+
+        if optL == 1:
+            os.system('cls')
+            print('--------------------------------------------')
+            print('               FAZER DEPOSITO!')
+            print('--------------------------------------------\n')
+            usuario.Depositar()
+        elif optL == 2:
+            os.system('cls')
+            print('--------------------------------------------')
+            print('               FAZER SAQUE!')
+            print('--------------------------------------------\n')
+            usuario.Sacar()
+        elif optL == 3:
             os.system('cls')
             print('--------------------------------------------')
             print('            SALDO EM CONTA: ')
