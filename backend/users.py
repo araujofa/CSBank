@@ -7,26 +7,62 @@ class User:
     get_year = datetime.today().year
 
     # CONSTRUTOR PADRÃO DA CLASSE CONTENDO PARÂMETROS PARA CRIAR UM OBJETO
-    def __init__(self, nome='',email='', ano_nascimento='', senha='', saldo='0'):
+    def __init__(self, nome='',email='', cpf='', ano_nascimento='', senha='', saldo='0'):
         self.nome = nome
         self.email = email
         self.ano_nascimento = ano_nascimento
         self.senha = senha
         self.saldo = saldo
+        self.cpf = cpf
 
     # MÉTODO PARA CADASTRO DE UM USUARIO
     def Cadastro(self):
         ano_nascimento_tem_letras = True
 
         # VERIFICA SE AS VARIAVEIS NÃO POSSUEM CONTEUDO, CASO NÃO POSSUAM, ATRIBUI O VALOR QUE ESTIVER NELA MESMA
-        if not self.nome and not self.ano_nascimento and not self.email and not self.senha:
+        if not self.nome and not self.cpf and not self.ano_nascimento and not self.email and not self.senha:
             self.nome = self.nome
             self.email = self.email
             self.ano_nascimento = self.ano_nascimento
             self.senha = self.senha
+            self.cpf = self.cpf
 
-        self.nome = input('Digite seu nome completo: ')
+        self.nome = input('Digite seu nome completo: ').split()
         self.email = input('Digite seu e-mail: ')
+
+        while True:
+            self.cpf = input('Digite seu CPF (Somente números): ')
+            if self.cpf.isdigit():
+                cpf_len = len(self.cpf)
+                numbers_cpf = [int(digit) for digit in self.cpf]
+
+                # FAZ A VERIFICAÇÃO SE O CPF CONTEM A QUANTIDADE DE DIGITOS CORRETOS
+                if cpf_len == 11:
+
+                    # FAZ A CONTA PARA SABER SE O PRIMEIRO DIGITO VERIFICADOR CORRESPONDE AO CPF DIGITADO
+                    conta_digito_um = (numbers_cpf[0] * 10 + numbers_cpf[1] * 9 + numbers_cpf[2] * 8 + numbers_cpf[3] * 7 + numbers_cpf[4] * 6 + numbers_cpf[5] * 5 + numbers_cpf[6] * 4 + numbers_cpf[7] * 3 + numbers_cpf[8] * 2) * 10
+
+                    # FAZ A CONTA PARA SABER SE O SEGUNDO DIGITO VERIFICADOR CORRESPONDE AO CPF DIGITADO
+                    conta_digito_dois = (numbers_cpf[0] * 11 + numbers_cpf[1] * 10 + numbers_cpf[2] * 9 + numbers_cpf[3] * 8 + numbers_cpf[4] * 7 + numbers_cpf[5] * 6 + numbers_cpf[6] * 5 + numbers_cpf[7] * 4 + numbers_cpf[8] * 3 + numbers_cpf[9] * 2) * 10
+
+                    # FAZ A VALIDAÇÃO INICIAL PARA SABER SE TODOS DIGITOS SÃO IGUAIS PARA INVALIDÁ-LO
+                    if numbers_cpf[0] == numbers_cpf[1] and numbers_cpf[1] == numbers_cpf[2] and numbers_cpf[2] == numbers_cpf[3] and numbers_cpf[3] == numbers_cpf[4] and numbers_cpf[4] == numbers_cpf[5] and numbers_cpf[5] == numbers_cpf[6] and numbers_cpf[6] == numbers_cpf[7] and numbers_cpf[7] == numbers_cpf[8] and numbers_cpf[8] == numbers_cpf[9] and numbers_cpf[9] == numbers_cpf[10]:
+
+                        print('CPF INVÁLIDO!')
+
+                    else:
+
+                        # CASO OS DIGITOS NÃO SEJAM TODOS IGUAIS, FAZ A VALIDAÇÃO SE O CPF É VALIDO OU NÃO
+                        if conta_digito_um % 11 == numbers_cpf[9] and conta_digito_dois % 11 == numbers_cpf[10]:
+                            pass
+                            break
+                        else:
+                            print('CPF INVÁLIDO!')
+                else:
+                    print('CPF digitado contem a quantidade errada de digitos!')
+
+            else:
+                print('DIGITE SOMENTE NÚMEROS')
 
         # LOOP WHILE FEITO PARA VERIFICAR SE O ANO DE NASCIMENTO DO USUARIO CONTEM CARACTERES DIFERENTES DE NUMEROS
         while(ano_nascimento_tem_letras):
@@ -155,3 +191,5 @@ class User:
                 input_senha_vazio = False
             
         return
+    
+        

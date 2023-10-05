@@ -24,7 +24,7 @@ if option == 1:
     while(usuario_nao_saiu):
         os.system('cls')
         print('--------------------------------------------')
-        print(f'          SEJA BEM-VINDO(A) {usuario.nome.upper()}')
+        print(f'          SEJA BEM-VINDO(A) {usuario.nome[0].upper()}')
         print('--------------------------------------------')
         print('          O QUE DESEJA FAZER HOJE?\n')
         print('          1. FAZER DEPOSITO')
@@ -51,7 +51,7 @@ if option == 1:
             print('--------------------------------------------')
             print('            SALDO EM CONTA: ')
             print('--------------------------------------------\n')
-            print(f'Olá {usuario.nome.upper()}, seu saldo atual é de R${usuario.saldo}\n')
+            print(f'Olá {usuario.nome[0].upper()}, seu saldo atual é de R${usuario.saldo}\n')
 
             input('PRESSIONE QUALQUER TECLA PARA VOLTAR')
         else:
@@ -68,7 +68,7 @@ elif option == 2:
     while(usuario_nao_saiu):
         os.system('cls')
         print('--------------------------------------------')
-        print(f'          SEJA BEM-VINDO(A) {usuario.nome.upper()}')
+        print(f'          SEJA BEM-VINDO(A) {usuario.nome[0].upper()}')
         print('--------------------------------------------')
         print('          O QUE DESEJA FAZER HOJE?\n')
         print('          1. FAZER DEPOSITO')
@@ -95,7 +95,7 @@ elif option == 2:
             print('--------------------------------------------')
             print('            SALDO EM CONTA: ')
             print('--------------------------------------------\n')
-            print(f'Olá {usuario.nome.upper()}, seu saldo atual é de R${usuario.saldo}\n')
+            print(f'Olá {usuario.nome[0].upper()}, seu saldo atual é de R${usuario.saldo}\n')
 
             input('PRESSIONE QUALQUER TECLA PARA VOLTAR')
         else:
